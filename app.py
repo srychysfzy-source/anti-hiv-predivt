@@ -1,6 +1,6 @@
 import os
 import re
-import pickle
+import joblib
 import numpy as np
 import pandas as pd
 from collections import Counter
@@ -111,8 +111,7 @@ if not os.path.exists(MODEL_PATH):
 else:
     @st.cache_resource
     def load_pipeline():
-        with open(MODEL_PATH, 'rb') as f:
-            return pickle.load(f)
+        return joblib.load(MODEL_PATH)
 
 
     pipeline = load_pipeline()
